@@ -19,14 +19,14 @@ def render_model_performance_view(df_preds: pd.DataFrame, station_id: str, data_
     st.markdown("## ⚖️ Model Performance (Baseline vs Coupled XGBoost)")
     
     if data_mode.lower() == "real":
-        st.markdown(
-            """
-            > 🌐 **REAL DATA BENCHMARK EVALUATION**:  
-            > Models evaluated on untouched real test set (`2024-03-19` to `2024-04-01`, 1,312 observations across 4 Delhi NCR stations).  
-            > Air Quality Stream: **Open-Meteo CAMS Air Quality Stream** | Weather Stream: **Open-Meteo ERA5**  
-            > *High pollution (≥ 250 µg/m³) was not present in the spring 2024 real test window.*
-            """
-        )
+        # st.markdown(
+        #     """
+        #     > 🌐 **REAL DATA BENCHMARK EVALUATION**:  
+        #     > Models evaluated on untouched real test set (`2024-03-19` to `2024-04-01`, 1,312 observations across 4 Delhi NCR stations).  
+        #     > Air Quality Stream: **Open-Meteo CAMS Air Quality Stream** | Weather Stream: **Open-Meteo ERA5**  
+        #     > *High pollution (≥ 250 µg/m³) was not present in the spring 2024 real test window.*
+        #     """
+        # )
         
         if os.path.exists(REAL_METRICS_PATH):
             with open(REAL_METRICS_PATH, "r") as f:
@@ -78,7 +78,7 @@ def render_model_performance_view(df_preds: pd.DataFrame, station_id: str, data_
             st.markdown("### 📊 Real Model Benchmark Comparison Table")
             st.dataframe(pd.DataFrame(table_rows), use_container_width=True, hide_index=True)
             
-            st.info("⚠️ Note: Severe episodes (PM2.5 ≥ 250 µg/m³) were not observed in CAMS data for the March 19–April 01, 2024 test period, so fake severe event metrics are omitted.")
+
 
         # Show Evaluation Plots if present
         if os.path.exists("models/real_model_comparison.png"):

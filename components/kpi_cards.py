@@ -6,32 +6,63 @@ Displays CPCB AQI status badges, weather cards, and atmospheric risk indicators.
 
 import streamlit as st
 
+import plotly.graph_objects as go
+
 def render_aqi_badge_card(aqi: float, category: str, color: str, pm25_conc: float):
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=aqi,
+        number={'suffix': "", 'font': {'size': 60, 'color': '#f8fafc', 'family': 'Inter'}},
+        domain={'x': [0, 1], 'y': [0, 1]},
+        title={'text': "Current Air Quality Index (AQI)", 'font': {'size': 18, 'color': '#94a3b8', 'family': 'Inter'}},
+        gauge={
+            'axis': {'range': [None, 500], 'tickwidth': 1, 'tickcolor': "#334155", 'tickfont': {'color': '#94a3b8'}},
+            'bar': {'color': color, 'thickness': 0.75},
+            'bgcolor': "#1e293b",
+            'borderwidth': 0,
+            'steps': [
+                {'range': [0, 50], 'color': 'rgba(34, 197, 94, 0.08)'},
+                {'range': [51, 100], 'color': 'rgba(234, 179, 8, 0.08)'},
+                {'range': [101, 200], 'color': 'rgba(249, 115, 22, 0.08)'},
+                {'range': [201, 300], 'color': 'rgba(239, 68, 68, 0.08)'},
+                {'range': [301, 400], 'color': 'rgba(185, 28, 28, 0.08)'},
+                {'range': [401, 500], 'color': 'rgba(126, 34, 206, 0.08)'}
+            ]
+        }
+    ))
+    
+    fig.update_layout(
+        height=320,
+        margin=dict(l=20, r=20, t=60, b=10),
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        font={'family': "Inter"}
+    )
+    
+    st.markdown(
+        """
+        <style>
+        .aqi-stats {
+            display: flex; justify-content: center; gap: 24px;
+            margin-top: -30px; margin-bottom: 24px; z-index: 10; position: relative;
+        }
+        .aqi-pill {
+            background: #1e293b; border: 1px solid #334155;
+            padding: 8px 24px; border-radius: 20px;
+            font-weight: 600; font-size: 15px; color: #f8fafc;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+        </style>
+        """, unsafe_allow_html=True
+    )
+    
+    st.plotly_chart(fig, use_container_width=True)
+    
     st.markdown(
         f"""
-        <div style="
-            background-color: {color};
-            color: #ffffff;
-            padding: 22px 28px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-            margin-bottom: 24px;
-        ">
-            <h4 style="margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; opacity: 0.95;">
-                Current Air Quality Index (AQI)
-            </h4>
-            <h1 style="margin: 6px 0; font-size: 52px; font-weight: 900; line-height: 1.0;">
-                {aqi:.0f}
-            </h1>
-            <div style="display: flex; justify-content: center; gap: 12px; align-items: center; margin-top: 8px;">
-                <span style="background: rgba(0,0,0,0.25); font-size: 18px; font-weight: 700; padding: 4px 18px; border-radius: 20px;">
-                    {category} Category
-                </span>
-                <span style="background: rgba(255,255,255,0.25); font-size: 15px; font-weight: 600; padding: 4px 14px; border-radius: 20px;">
-                    PM2.5: {pm25_conc:.1f} µg/m³
-                </span>
-            </div>
+        <div class="aqi-stats">
+            <span class="aqi-pill" style="border-top: 3px solid {color};">{category} Category</span>
+            <span class="aqi-pill">PM2.5: {pm25_conc:.1f} µg/m³</span>
         </div>
         """,
         unsafe_allow_html=True

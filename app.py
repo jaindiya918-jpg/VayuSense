@@ -24,6 +24,54 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Inject Custom Dashboard CSS
+st.markdown("""
+    <style>
+    /* Metric/KPI Cards Styling */
+    div[data-testid="stMetric"] {
+        background-color: #1e293b;
+        border-radius: 12px;
+        padding: 18px 22px;
+        border: 1px solid #334155;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    /* Remove default padding from metric container to fit background */
+    div[data-testid="stMetric"] > div {
+        margin: 0;
+    }
+
+    div[data-testid="stMetricLabel"] p {
+        font-size: 14px;
+        color: #94a3b8;
+        font-weight: 500;
+    }
+
+    div[data-testid="stMetricValue"] {
+        font-size: 32px;
+        font-weight: 700;
+        color: #f8fafc;
+        margin-top: 5px;
+    }
+
+    div[data-testid="stMetricDelta"] {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    /* Custom Styling for Streamlit Sidebar Radio Selection */
+    .stRadio div[role="radiogroup"] > label {
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+    .stRadio div[role="radiogroup"] > label:hover {
+        background-color: #1e293b;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
 # Insert project root to import modules cleanly
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
@@ -121,11 +169,9 @@ def main():
             "📈 PM2.5 Forecast",
             "🌦️ Atmospheric Conditions",
             "⚛️ Weather-Pollution Coupling",
-            "🔍 Why This Forecast? (SHAP)",
             "🧪 Weather What-If Simulator",
             "🗺️ Delhi NCR Station Map",
-            "⚖️ Model Performance",
-            "ℹ️ About VayuSense"
+            "⚖️ Model Performance"
         ],
         index=0
     )
@@ -231,8 +277,8 @@ def main():
     
     horizon_selected = st.sidebar.select_slider(
         "Forecast Horizon",
-        options=["+1h (Coming Soon)", "+3h (Coming Soon)", "+6 Hours (Active)", "+12h (Coming Soon)", "+24h (Coming Soon)"],
-        value="+6 Hours (Active)"
+        options=["+1 Hour", "+3 Hours", "+6 Hours", "+12 Hours", "+24 Hours"],
+        value="+6 Hours"
     )
     
     st.sidebar.markdown("---")
@@ -367,14 +413,11 @@ def main():
             )
             
         st.markdown("---")
-        st.markdown("#### **Coupling Proxy Definitions:**")
-        st.markdown("- **Ventilation Capacity ($VC = u \\times h_{PBL}$)**: Simplified ventilation capacity ($m^2/s$). Lower VC ($<1500$ m²/s) indicates weaker atmospheric ventilation.")
-        st.markdown("- **$PM_{2.5} \\times RH$**: Interaction proxy for humidity-dependent particulate behavior.")
-        st.markdown("- **$PM_{2.5} / h_{PBL}$**: Concentration density ratio inside the mixed boundary layer volume.")
+        st.markdown(
+            "#### **Coupling Proxy Definitions**",
+            help="**Ventilation Capacity ($VC = u \\times h_{PBL}$)**: Simplified ventilation capacity ($m^2/s$). Lower VC ($<1500$ m²/s) indicates weaker atmospheric ventilation.\n\n**$PM_{2.5} \\times RH$**: Interaction proxy for humidity-dependent particulate behavior.\n\n**$PM_{2.5} / h_{PBL}$**: Concentration density ratio inside the mixed boundary layer volume."
+        )
 
-    # --- PAGE 5: WHY THIS FORECAST? (SHAP) ---
-    elif page == "🔍 Why This Forecast? (SHAP)":
-        render_shap_view(explainer_obj, selected_feat, data_mode=data_mode)
 
     # --- PAGE 6: WHAT-IF SIMULATOR ---
     elif page == "🧪 Weather What-If Simulator":
@@ -391,24 +434,6 @@ def main():
         st.markdown("## 📊 HISTORICAL MODEL EVALUATION (2024 Test Set Benchmark)")
         render_model_performance_view(df_preds, station_id=station_selected, data_mode=data_mode)
 
-    # --- PAGE 9: ABOUT VAYUSENSE ---
-    elif page == "ℹ️ About VayuSense":
-        st.markdown("## ℹ️ About VayuSense")
-        st.markdown(
-            f"""
-            ### **What is VayuSense?**
-            Traditional air quality forecasting systems usually treat meteorology and pollution history as separate inputs.
-            **VayuSense** explicitly incorporates **physics-informed proxy features** (Ventilation Capacity, Pollutant Trapping Ratio, Hygroscopic Interaction) into the machine-learning feature space.
-            
-            ### **Active Data Stream ({'LIVE STREAM DATA' if data_mode=='real' else 'DEMO MODE'})**:
-            - **Air Quality Stream**: OpenAQ v3 API (with fallback to Open-Meteo CAMS Air Quality Stream)
-            - **Meteorological Stream**: Open-Meteo Weather API
-            - **Model Architecture**: XGBoost Regressor with 23 Weather–Pollution Coupled Features
-            
-            ### **Important Disclaimer**:
-            *Current observations are used for live inference with the trained VayuSense model. The model is not automatically retrained on live data.*
-            """
-        )
 
 if __name__ == "__main__":
     main()
