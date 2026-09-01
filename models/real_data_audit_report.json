@@ -1,0 +1,270 @@
+{
+  "dataset_filepath": "data/raw/real_delhi_ncr_data.csv",
+  "total_rows": 8832,
+  "total_stations": 4,
+  "stations": [
+    "Anand_Vihar",
+    "Mandir_Marg",
+    "Punjabi_Bagh",
+    "RK_Puram"
+  ],
+  "timestamp_range": {
+    "start": "2024-01-01 00:00:00",
+    "end": "2024-04-01 23:00:00"
+  },
+  "duplicate_row_count": 0,
+  "is_sorted_chronologically": true,
+  "station_time_gaps_non_hourly": {
+    "Anand_Vihar": 0,
+    "Mandir_Marg": 0,
+    "Punjabi_Bagh": 0,
+    "RK_Puram": 0
+  },
+  "station_leakage_detected": false,
+  "future_data_leakage_detected": false,
+  "data_source_provenance": {
+    "pollution_source": "Open-Meteo CAMS Air Quality Reanalysis (Real-time CAMS Atmospheric Stream)",
+    "weather_source": "Open-Meteo Weather Reanalysis (ECMWF ERA5 / Global Operational)",
+    "station_ground_truth_claim": false,
+    "note": "Air quality values represent CAMS atmospheric reanalysis model/satellite data for Delhi station coordinates, NOT physical CPCB ground sensors."
+  },
+  "suspicious_physical_values": [],
+  "statistical_ranges": {
+    "pm25": {
+      "min": 14.7,
+      "max": 283.1,
+      "median": 65.9,
+      "mean": 78.98
+    },
+    "pm10": {
+      "min": 27.6,
+      "max": 622.1,
+      "median": 128.5,
+      "mean": 140.28
+    },
+    "no2": {
+      "min": 3.3,
+      "max": 210.3,
+      "median": 30.5,
+      "mean": 39.73
+    },
+    "so2": {
+      "min": 6.7,
+      "max": 183.5,
+      "median": 28.3,
+      "mean": 36.04
+    },
+    "co": {
+      "min": 0.21,
+      "max": 4.83,
+      "median": 0.91,
+      "mean": 1.13
+    },
+    "o3": {
+      "min": 0.0,
+      "max": 336.0,
+      "median": 61.0,
+      "mean": 81.07
+    },
+    "temperature": {
+      "min": 3.1,
+      "max": 37.0,
+      "median": 15.6,
+      "mean": 16.26
+    },
+    "humidity": {
+      "min": 15.0,
+      "max": 100.0,
+      "median": 69.0,
+      "mean": 67.44
+    },
+    "wind_speed": {
+      "min": 0.0,
+      "max": 10.52,
+      "median": 2.39,
+      "mean": 2.55
+    },
+    "pressure": {
+      "min": 979.2,
+      "max": 999.8,
+      "median": 990.1,
+      "mean": 989.71
+    },
+    "rainfall": {
+      "min": 0.0,
+      "max": 14.5,
+      "median": 0.0,
+      "mean": 0.03
+    },
+    "pbl_height": {
+      "min": 10.0,
+      "max": 45.0,
+      "median": 40.0,
+      "mean": 41.21
+    }
+  },
+  "missing_value_breakdown": {
+    "timestamp": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pm25": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pm10": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "no2": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "so2": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "co": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "o3": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "temperature": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "humidity": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "wind_speed": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "wind_deg": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pressure": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "rainfall": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pbl_height": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "station_id": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "temp_gradient": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "is_demo": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pm25_x_humidity": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pm25_x_temp": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pm25_x_wind_speed": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pm25_div_pbl": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "ventilation_coeff": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "stagnation_indicator": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "inversion_indicator": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "lagged_pm25_coupling": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "dispersion_status": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pollution_risk_level": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    },
+    "pm25_target_1h": {
+      "missing_count": 4,
+      "missing_pct": 0.05
+    },
+    "pm25_target_3h": {
+      "missing_count": 12,
+      "missing_pct": 0.14
+    },
+    "pm25_target_6h": {
+      "missing_count": 24,
+      "missing_pct": 0.27
+    },
+    "pm25_target_12h": {
+      "missing_count": 48,
+      "missing_pct": 0.54
+    },
+    "pm25_target_24h": {
+      "missing_count": 96,
+      "missing_pct": 1.09
+    },
+    "data_source": {
+      "missing_count": 0,
+      "missing_pct": 0.0
+    }
+  },
+  "target_definitions": {
+    "+1h": "pm25_target_1h",
+    "+3h": "pm25_target_3h",
+    "+6h": "pm25_target_6h",
+    "+12h": "pm25_target_12h",
+    "+24h": "pm25_target_24h"
+  },
+  "feature_list": [
+    "pm25",
+    "pm10",
+    "no2",
+    "so2",
+    "co",
+    "o3",
+    "temperature",
+    "humidity",
+    "wind_speed",
+    "wind_deg",
+    "pressure",
+    "rainfall",
+    "pbl_height",
+    "pm25_x_humidity",
+    "pm25_x_temp",
+    "pm25_x_wind_speed",
+    "pm25_div_pbl",
+    "ventilation_coeff",
+    "stagnation_indicator",
+    "inversion_indicator",
+    "lagged_pm25_coupling"
+  ]
+}

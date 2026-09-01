@@ -1,0 +1,82 @@
+{
+  "data_mode": "REAL DATA",
+  "data_source_note": "Air quality: Open-Meteo CAMS atmospheric stream | Weather: Open-Meteo ERA5",
+  "predicted_pm25": 121.36,
+  "base_value": 89.76,
+  "positive_contributors": [
+    {
+      "feature": "hour_sin",
+      "display_name": "Time of Day (Sin)",
+      "shap_value": 13.958700180053711,
+      "raw_value": -0.9659,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_temp",
+      "display_name": "Temperature-PM2.5 Interaction",
+      "shap_value": 8.275799751281738,
+      "raw_value": 2122.5,
+      "is_coupling": true
+    },
+    {
+      "feature": "temperature",
+      "display_name": "Temperature (\u00b0C)",
+      "shap_value": 3.9995999336242676,
+      "raw_value": 28.3,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_6h",
+      "display_name": "PM2.5 (6h ago)",
+      "shap_value": 3.7060999870300293,
+      "raw_value": 93.8,
+      "is_coupling": false
+    },
+    {
+      "feature": "ventilation_coeff",
+      "display_name": "Ventilation Capacity (m\u00b2/s)",
+      "shap_value": 2.7318999767303467,
+      "raw_value": 67.55,
+      "is_coupling": true
+    }
+  ],
+  "negative_contributors": [
+    {
+      "feature": "lagged_pm25_coupling",
+      "display_name": "Lagged Pollutant Trapping Index",
+      "shap_value": -6.489099979400635,
+      "raw_value": 0.9445,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_x_humidity",
+      "display_name": "Humidity-PM2.5 Interaction",
+      "shap_value": -1.7754000425338745,
+      "raw_value": 2700.0,
+      "is_coupling": true
+    },
+    {
+      "feature": "wind_deg",
+      "display_name": "Wind Direction (\u00b0)",
+      "shap_value": -1.6394000053405762,
+      "raw_value": 159.0,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_mean_6h",
+      "display_name": "6h PM2.5 Moving Avg",
+      "shap_value": -1.4459999799728394,
+      "raw_value": 75.9833,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_wind_speed",
+      "display_name": "Wind Transport Interaction",
+      "shap_value": -0.5637999773025513,
+      "raw_value": 144.75,
+      "is_coupling": true
+    }
+  ],
+  "narrative": "VayuSense predicts PM2.5 at **121.4 \u00b5g/m\u00b3** (CPCB AQI **302 - Very Poor**).\nBaseline expected model output across test dataset is `89.8 \u00b5g/m\u00b3`.\nPrediction increased mainly because of: **Time of Day (Sin)** (`+13.96 \u00b5g/m\u00b3`).\nPrediction suppressed by: **Lagged Pollutant Trapping Index** (`-6.49 \u00b5g/m\u00b3`).\nThe prediction is also influenced by physics-informed proxy features, including boundary density ratio and thermal inversion conditions.",
+  "label": "Highest available real test prediction"
+}

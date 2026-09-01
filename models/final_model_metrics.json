@@ -1,0 +1,46 @@
+{
+  "forecast_horizon_hours": 6,
+  "models_evaluated": {
+    "old_baseline": {
+      "model_name": "Old Baseline",
+      "mae": 137.14,
+      "rmse": 177.59,
+      "r2": 0.6397,
+      "high_pollution_mae": 219.15
+    },
+    "old_coupled": {
+      "model_name": "Old Coupled",
+      "mae": 139.3,
+      "rmse": 171.26,
+      "r2": 0.6649,
+      "high_pollution_mae": 212.68
+    },
+    "coupling_only": {
+      "model_name": "Coupling Only",
+      "mae": 153.15,
+      "rmse": 207.62,
+      "r2": 0.5076,
+      "high_pollution_mae": 154.51
+    },
+    "final_baseline": {
+      "model_name": "Final Baseline",
+      "mae": 21.2,
+      "rmse": 40.85,
+      "r2": 0.9809,
+      "high_pollution_mae": 23.55
+    },
+    "final_coupled": {
+      "model_name": "Final Coupled",
+      "mae": 21.56,
+      "rmse": 41.08,
+      "r2": 0.9807,
+      "high_pollution_mae": 23.88
+    }
+  },
+  "final_coupling_impact": {
+    "mae_improvement_pct": -1.7,
+    "rmse_improvement_pct": -0.56,
+    "r2_improvement": -0.0002,
+    "severe_mae_improvement_pct": -1.4
+  }
+}

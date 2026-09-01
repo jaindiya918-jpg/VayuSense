@@ -1,0 +1,108 @@
+{
+  "dataset_path": "data/raw/real_delhi_ncr_data.csv",
+  "wind_speed_audit": {
+    "raw_unit": "m/s",
+    "final_model_unit": "m/s",
+    "conversion_applied": true,
+    "stats_ms": {
+      "min": 0.0,
+      "median": 2.39,
+      "max": 10.52,
+      "mean": 2.547870244565217,
+      "std": 1.2432169141774927
+    }
+  },
+  "pbl_height_distribution": {
+    "min": 10.0,
+    "pct_5th": 35.0,
+    "pct_25th": 35.0,
+    "median": 40.0,
+    "mean": 41.21433423913044,
+    "pct_75th": 45.0,
+    "pct_95th": 45.0,
+    "max": 45.0,
+    "std": 4.239880881137261,
+    "num_rows_equal_max": 4408,
+    "pct_rows_equal_max": 49.91,
+    "pbl_source_note": "Open-Meteo ERA5 reanalysis calculates boundary layer height continuously. Diurnal mixing produces lowest nighttime boundary layer (~10-50m) and afternoon expansion (~600-1800m). Linear interpolation was applied to bridge missing nighttime reanalysis grid steps without artificial constant clipping."
+  },
+  "coupling_features_audit": {
+    "ventilation_coeff_stats": {
+      "min": 0.0,
+      "median": 98.55,
+      "max": 473.4,
+      "mean": 104.97984601449276
+    },
+    "stagnation_indicator": {
+      "active_hours": 1590,
+      "active_pct": 18.0
+    },
+    "pm25_div_pbl_stats": {
+      "min": 0.3266665940740901,
+      "median": 1.617499595625101,
+      "max": 18.90998109001891,
+      "mean": 1.9506040593120977
+    },
+    "future_information_leakage": false
+  },
+  "multi_horizon_targets": {
+    "+1h": "pm25_target_1h",
+    "+3h": "pm25_target_3h",
+    "+6h": "pm25_target_6h",
+    "+12h": "pm25_target_12h",
+    "+24h": "pm25_target_24h"
+  },
+  "target_leakage_check": {
+    "target_excluded_from_X": true
+  },
+  "final_feature_lists": {
+    "final_baseline_features": [
+      "temperature",
+      "humidity",
+      "wind_speed",
+      "wind_deg",
+      "pressure",
+      "pbl_height",
+      "pm25_lag_1h",
+      "pm25_lag_3h",
+      "pm25_lag_6h",
+      "pm25_lag_24h",
+      "pm25_roll_mean_6h",
+      "pm25_roll_mean_24h",
+      "pm25_roll_std_24h",
+      "hour_sin",
+      "hour_cos"
+    ],
+    "final_coupled_features": [
+      "temperature",
+      "humidity",
+      "wind_speed",
+      "wind_deg",
+      "pressure",
+      "pbl_height",
+      "pm25_lag_1h",
+      "pm25_lag_3h",
+      "pm25_lag_6h",
+      "pm25_lag_24h",
+      "pm25_roll_mean_6h",
+      "pm25_roll_mean_24h",
+      "pm25_roll_std_24h",
+      "hour_sin",
+      "hour_cos",
+      "ventilation_coeff",
+      "pm25_x_humidity",
+      "pm25_x_temp",
+      "pm25_x_wind_speed",
+      "pm25_div_pbl",
+      "stagnation_indicator",
+      "inversion_indicator",
+      "lagged_pm25_coupling"
+    ]
+  },
+  "confirmations": {
+    "target_excluded_from_X": true,
+    "timestamp_diurnal_encoded": true,
+    "station_id_partitioned": true,
+    "future_variables_excluded": true
+  }
+}

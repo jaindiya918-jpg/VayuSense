@@ -1,0 +1,290 @@
+{
+  "shap_version": "0.52.0",
+  "test_observations_count": 1712,
+  "global_ranking": [
+    {
+      "feature": "hour_sin",
+      "display_name": "Time of Day (Sin)",
+      "mean_abs_shap": 189.44720458984375,
+      "is_coupling": false
+    },
+    {
+      "feature": "pressure",
+      "display_name": "Pressure (hPa)",
+      "mean_abs_shap": 57.85355758666992,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_mean_24h",
+      "display_name": "24h PM2.5 Moving Avg",
+      "mean_abs_shap": 52.71939468383789,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_6h",
+      "display_name": "PM2.5 (6h ago)",
+      "mean_abs_shap": 41.37240219116211,
+      "is_coupling": false
+    },
+    {
+      "feature": "hour_cos",
+      "display_name": "Time of Day (Cos)",
+      "mean_abs_shap": 22.401927947998047,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_mean_6h",
+      "display_name": "6h PM2.5 Moving Avg",
+      "mean_abs_shap": 7.872441291809082,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_temp",
+      "display_name": "Temperature-PM2.5 Interaction",
+      "mean_abs_shap": 6.269235134124756,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_roll_std_24h",
+      "display_name": "24h PM2.5 Std Dev",
+      "mean_abs_shap": 5.616003513336182,
+      "is_coupling": false
+    },
+    {
+      "feature": "temperature",
+      "display_name": "Temperature (\u00b0C)",
+      "mean_abs_shap": 4.262707710266113,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_3h",
+      "display_name": "PM2.5 (3h ago)",
+      "mean_abs_shap": 3.3763182163238525,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_1h",
+      "display_name": "PM2.5 (1h ago)",
+      "mean_abs_shap": 2.7631545066833496,
+      "is_coupling": false
+    },
+    {
+      "feature": "humidity",
+      "display_name": "Relative Humidity (%)",
+      "mean_abs_shap": 2.6199560165405273,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_24h",
+      "display_name": "PM2.5 (24h ago)",
+      "mean_abs_shap": 2.3192999362945557,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_humidity",
+      "display_name": "Humidity-PM2.5 Interaction",
+      "mean_abs_shap": 2.0189967155456543,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_x_wind_speed",
+      "display_name": "Wind Transport Interaction",
+      "mean_abs_shap": 2.0187032222747803,
+      "is_coupling": true
+    },
+    {
+      "feature": "pbl_height",
+      "display_name": "Boundary Layer Height (m)",
+      "mean_abs_shap": 1.4922208786010742,
+      "is_coupling": false
+    },
+    {
+      "feature": "ventilation_coeff",
+      "display_name": "Ventilation Capacity (m\u00b2/s)",
+      "mean_abs_shap": 1.4455292224884033,
+      "is_coupling": true
+    },
+    {
+      "feature": "wind_speed",
+      "display_name": "Wind Speed (m/s)",
+      "mean_abs_shap": 1.3615258932113647,
+      "is_coupling": false
+    },
+    {
+      "feature": "wind_deg",
+      "display_name": "Wind Direction (\u00b0)",
+      "mean_abs_shap": 1.3265764713287354,
+      "is_coupling": false
+    },
+    {
+      "feature": "lagged_pm25_coupling",
+      "display_name": "Lagged Pollutant Trapping Index",
+      "mean_abs_shap": 1.1147030591964722,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_div_pbl",
+      "display_name": "Boundary Density Ratio",
+      "mean_abs_shap": 0.8384820818901062,
+      "is_coupling": true
+    },
+    {
+      "feature": "inversion_indicator",
+      "display_name": "Thermal Inversion Layer Flag",
+      "mean_abs_shap": 0.05473686009645462,
+      "is_coupling": true
+    },
+    {
+      "feature": "stagnation_indicator",
+      "display_name": "Air Stagnation Event Flag",
+      "mean_abs_shap": 0.0,
+      "is_coupling": true
+    }
+  ],
+  "attribution_share": {
+    "total_coupling_shap_magnitude": 13.76038646697998,
+    "total_non_coupling_shap_magnitude": 396.8046875,
+    "coupling_pct_share": 3.35,
+    "non_coupling_pct_share": 96.65
+  },
+  "high_pollution_ranking": [
+    {
+      "feature": "hour_sin",
+      "display_name": "Time of Day (Sin)",
+      "mean_abs_shap": 177.31263732910156,
+      "is_coupling": false
+    },
+    {
+      "feature": "pressure",
+      "display_name": "Pressure (hPa)",
+      "mean_abs_shap": 74.59646606445312,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_mean_24h",
+      "display_name": "24h PM2.5 Moving Avg",
+      "mean_abs_shap": 68.9496841430664,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_6h",
+      "display_name": "PM2.5 (6h ago)",
+      "mean_abs_shap": 38.48908233642578,
+      "is_coupling": false
+    },
+    {
+      "feature": "hour_cos",
+      "display_name": "Time of Day (Cos)",
+      "mean_abs_shap": 23.08367347717285,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_mean_6h",
+      "display_name": "6h PM2.5 Moving Avg",
+      "mean_abs_shap": 8.271419525146484,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_std_24h",
+      "display_name": "24h PM2.5 Std Dev",
+      "mean_abs_shap": 7.226804256439209,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_temp",
+      "display_name": "Temperature-PM2.5 Interaction",
+      "mean_abs_shap": 7.077235698699951,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_lag_3h",
+      "display_name": "PM2.5 (3h ago)",
+      "mean_abs_shap": 4.726078033447266,
+      "is_coupling": false
+    },
+    {
+      "feature": "temperature",
+      "display_name": "Temperature (\u00b0C)",
+      "mean_abs_shap": 4.574920177459717,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_1h",
+      "display_name": "PM2.5 (1h ago)",
+      "mean_abs_shap": 3.1475913524627686,
+      "is_coupling": false
+    },
+    {
+      "feature": "humidity",
+      "display_name": "Relative Humidity (%)",
+      "mean_abs_shap": 2.6449801921844482,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_humidity",
+      "display_name": "Humidity-PM2.5 Interaction",
+      "mean_abs_shap": 2.2866861820220947,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_lag_24h",
+      "display_name": "PM2.5 (24h ago)",
+      "mean_abs_shap": 2.1183438301086426,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_wind_speed",
+      "display_name": "Wind Transport Interaction",
+      "mean_abs_shap": 2.0183112621307373,
+      "is_coupling": true
+    },
+    {
+      "feature": "pbl_height",
+      "display_name": "Boundary Layer Height (m)",
+      "mean_abs_shap": 1.8744347095489502,
+      "is_coupling": false
+    },
+    {
+      "feature": "wind_speed",
+      "display_name": "Wind Speed (m/s)",
+      "mean_abs_shap": 1.6201785802841187,
+      "is_coupling": false
+    },
+    {
+      "feature": "wind_deg",
+      "display_name": "Wind Direction (\u00b0)",
+      "mean_abs_shap": 1.5885285139083862,
+      "is_coupling": false
+    },
+    {
+      "feature": "ventilation_coeff",
+      "display_name": "Ventilation Capacity (m\u00b2/s)",
+      "mean_abs_shap": 1.5514411926269531,
+      "is_coupling": true
+    },
+    {
+      "feature": "lagged_pm25_coupling",
+      "display_name": "Lagged Pollutant Trapping Index",
+      "mean_abs_shap": 1.2169047594070435,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_div_pbl",
+      "display_name": "Boundary Density Ratio",
+      "mean_abs_shap": 0.9105246067047119,
+      "is_coupling": true
+    },
+    {
+      "feature": "inversion_indicator",
+      "display_name": "Thermal Inversion Layer Flag",
+      "mean_abs_shap": 0.052752621471881866,
+      "is_coupling": true
+    },
+    {
+      "feature": "stagnation_indicator",
+      "display_name": "Air Stagnation Event Flag",
+      "mean_abs_shap": 0.0,
+      "is_coupling": true
+    }
+  ]
+}

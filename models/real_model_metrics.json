@@ -1,0 +1,194 @@
+{
+  "dataset_filepath": "data/raw/real_delhi_ncr_data.csv",
+  "target": "pm25_target_6h (+6 hours ahead)",
+  "split_information": {
+    "train_rows": 6096,
+    "val_rows": 1304,
+    "test_rows": 1312,
+    "train_date_range": [
+      "2024-01-02 00:00:00",
+      "2024-03-05 11:00:00"
+    ],
+    "val_date_range": [
+      "2024-03-05 12:00:00",
+      "2024-03-19 01:00:00"
+    ],
+    "test_date_range": [
+      "2024-03-19 02:00:00",
+      "2024-04-01 17:00:00"
+    ]
+  },
+  "model_parameters": {
+    "n_estimators": 250,
+    "max_depth": 5,
+    "learning_rate": 0.04,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "random_state": 42
+  },
+  "baseline_metrics": {
+    "model_name": "Real Baseline XGBoost",
+    "mae": 15.5993,
+    "rmse": 19.4784,
+    "r2": -0.4776,
+    "high_pollution_mae": 0.0,
+    "high_pollution_samples": 0,
+    "low_ventilation_mae": 15.5993,
+    "low_ventilation_samples": 1312,
+    "inversion_mae": 10.9334,
+    "inversion_samples": 540,
+    "stagnation_mae": 16.8317,
+    "stagnation_samples": 159
+  },
+  "coupled_metrics": {
+    "model_name": "Real Coupled XGBoost",
+    "mae": 14.5873,
+    "rmse": 17.9786,
+    "r2": -0.2588,
+    "high_pollution_mae": 0.0,
+    "high_pollution_samples": 0,
+    "low_ventilation_mae": 14.5873,
+    "low_ventilation_samples": 1312,
+    "inversion_mae": 10.9453,
+    "inversion_samples": 540,
+    "stagnation_mae": 15.3489,
+    "stagnation_samples": 159
+  },
+  "improvements": {
+    "mae_improvement_pct": 6.49,
+    "rmse_improvement_pct": 7.7,
+    "r2_improvement": 0.2188,
+    "high_pollution_mae_imp_pct": 0.0,
+    "low_ventilation_mae_imp_pct": 6.49,
+    "inversion_mae_imp_pct": -0.11,
+    "stagnation_mae_imp_pct": 8.81
+  },
+  "feature_importance_top20": [
+    {
+      "feature": "pm25_roll_mean_24h",
+      "display_name": "24h PM2.5 Moving Avg",
+      "importance": 0.2799524962902069,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_mean_6h",
+      "display_name": "6h PM2.5 Moving Avg",
+      "importance": 0.13239514827728271,
+      "is_coupling": false
+    },
+    {
+      "feature": "lagged_pm25_coupling",
+      "display_name": "Lagged Pollutant Trapping Index",
+      "importance": 0.11566515266895294,
+      "is_coupling": true
+    },
+    {
+      "feature": "hour_sin",
+      "display_name": "Time of Day (Sin)",
+      "importance": 0.07465394586324692,
+      "is_coupling": false
+    },
+    {
+      "feature": "inversion_indicator",
+      "display_name": "Thermal Inversion Layer Flag",
+      "importance": 0.05882606655359268,
+      "is_coupling": true
+    },
+    {
+      "feature": "hour_cos",
+      "display_name": "Time of Day (Cos)",
+      "importance": 0.044950127601623535,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_temp",
+      "display_name": "Temperature-PM2.5 Interaction",
+      "importance": 0.04215943440794945,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_x_humidity",
+      "display_name": "Humidity-PM2.5 Interaction",
+      "importance": 0.04082497954368591,
+      "is_coupling": true
+    },
+    {
+      "feature": "ventilation_coeff",
+      "display_name": "Ventilation Capacity (m\u00b2/s)",
+      "importance": 0.027581190690398216,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_div_pbl",
+      "display_name": "Boundary Density Ratio",
+      "importance": 0.024486171081662178,
+      "is_coupling": true
+    },
+    {
+      "feature": "pm25_lag_6h",
+      "display_name": "PM2.5 (6h ago)",
+      "importance": 0.02410934679210186,
+      "is_coupling": false
+    },
+    {
+      "feature": "wind_speed",
+      "display_name": "Wind Speed (m/s)",
+      "importance": 0.021998640149831772,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_3h",
+      "display_name": "PM2.5 (3h ago)",
+      "importance": 0.019258398562669754,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_1h",
+      "display_name": "PM2.5 (1h ago)",
+      "importance": 0.01423845998942852,
+      "is_coupling": false
+    },
+    {
+      "feature": "humidity",
+      "display_name": "Relative Humidity (%)",
+      "importance": 0.012267905287444592,
+      "is_coupling": false
+    },
+    {
+      "feature": "wind_deg",
+      "display_name": "Wind Direction (\u00b0)",
+      "importance": 0.012102818116545677,
+      "is_coupling": false
+    },
+    {
+      "feature": "temperature",
+      "display_name": "Temperature (\u00b0C)",
+      "importance": 0.012101370841264725,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_24h",
+      "display_name": "PM2.5 (24h ago)",
+      "importance": 0.012034310027956963,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_std_24h",
+      "display_name": "24h PM2.5 Std Dev",
+      "importance": 0.010729135014116764,
+      "is_coupling": false
+    },
+    {
+      "feature": "pressure",
+      "display_name": "Pressure (hPa)",
+      "importance": 0.009120145812630653,
+      "is_coupling": false
+    }
+  ],
+  "leakage_verification": "PASS - Zero target or future lead variables in X",
+  "limitations": {
+    "date_range": "2024-01-01 to 2024-04-01 (~3 months historical window)",
+    "pbl_height_variability": "Median = 40m, Max = 45m, 49.91% of rows equal 45m due to surface inversion layer boundaries in winter reanalysis",
+    "data_provenance": "Air quality stream uses Open-Meteo CAMS atmospheric satellite/reanalysis data for Delhi coordinates"
+  }
+}

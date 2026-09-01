@@ -1,0 +1,23 @@
+{
+  "forecast_horizon_hours": 6,
+  "baseline": {
+    "model_name": "Baseline XGBoost",
+    "mae": 167.06,
+    "rmse": 217.22,
+    "r2": 0.4609,
+    "high_pollution_mae": 270.57
+  },
+  "coupled": {
+    "model_name": "Coupled XGBoost",
+    "mae": 169.04,
+    "rmse": 213.33,
+    "r2": 0.4801,
+    "high_pollution_mae": 265.4
+  },
+  "improvements": {
+    "mae_improvement_pct": -1.19,
+    "rmse_improvement_pct": 1.79,
+    "r2_diff": 0.0192,
+    "high_pollution_mae_improvement_pct": 1.91
+  }
+}

@@ -1,0 +1,37 @@
+# Environment variables & Secrets (CRITICAL)
+.env
+*.env
+.streamlit/secrets.toml
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environments
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs & Temporary Scratch Files
+*.log
+scratch/
+
+# OS / System junk
+Desktop.ini
+$RECYCLE.BIN/

@@ -1,0 +1,72 @@
+{
+  "predicted_pm25": 749.2,
+  "base_value": 298.91,
+  "positive_contributors": [
+    {
+      "feature": "hour_sin",
+      "display_name": "Time of Day (Sin)",
+      "shap_value": 193.75059509277344,
+      "raw_value": -0.866,
+      "is_coupling": false
+    },
+    {
+      "feature": "pressure",
+      "display_name": "Pressure (hPa)",
+      "shap_value": 90.51309967041016,
+      "raw_value": 1018.22,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_mean_24h",
+      "display_name": "24h PM2.5 Moving Avg",
+      "shap_value": 87.08470153808594,
+      "raw_value": 465.0521,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_lag_6h",
+      "display_name": "PM2.5 (6h ago)",
+      "shap_value": 49.34280014038086,
+      "raw_value": 166.77,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_roll_std_24h",
+      "display_name": "24h PM2.5 Std Dev",
+      "shap_value": 8.230400085449219,
+      "raw_value": 287.9833,
+      "is_coupling": false
+    }
+  ],
+  "negative_contributors": [
+    {
+      "feature": "wind_deg",
+      "display_name": "Wind Direction (\u00b0)",
+      "shap_value": -0.573199987411499,
+      "raw_value": 331.1,
+      "is_coupling": false
+    },
+    {
+      "feature": "temperature",
+      "display_name": "Temperature (\u00b0C)",
+      "shap_value": -0.35929998755455017,
+      "raw_value": 24.09,
+      "is_coupling": false
+    },
+    {
+      "feature": "pm25_x_humidity",
+      "display_name": "Humidity-PM2.5 Interaction",
+      "shap_value": -0.05570000037550926,
+      "raw_value": 6430.7859,
+      "is_coupling": true
+    },
+    {
+      "feature": "inversion_indicator",
+      "display_name": "Thermal Inversion Layer Flag",
+      "shap_value": -9.999999747378752e-05,
+      "raw_value": 0.0,
+      "is_coupling": true
+    }
+  ],
+  "narrative": "VayuSense predicts PM2.5 at **749.2 \u00b5g/m\u00b3** (AQI **599 - Severe**).\nBaseline expected model output across test dataset is `298.9 \u00b5g/m\u00b3`.\nTop factor contributing positively to prediction: **Time of Day (Sin)** (`+193.75 \u00b5g/m\u00b3`).\nTop factor suppressing prediction: **Wind Direction (\u00b0)** (`-0.57 \u00b5g/m\u00b3`).\nThe prediction is also influenced by physics-informed proxy features, including atmospheric dispersion and humidity-particle interactions."
+}
