@@ -742,4 +742,4 @@ Add project contributors here.
 
 ## 28. License
 
-License information will be added.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

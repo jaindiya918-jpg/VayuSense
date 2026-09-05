@@ -12,6 +12,8 @@ import os
 import sys
 import numpy as np
 import pandas as pd
+import truststore
+truststore.inject_into_ssl()
 import streamlit as st
 from datetime import datetime
 from zoneinfo import ZoneInfo

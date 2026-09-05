@@ -7,6 +7,7 @@ predictions CSV, metrics JSON, pre-training validation, and real SHAP explanatio
 
 import os
 import unittest
+from unittest.mock import patch
 import json
 import pandas as pd
 import numpy as np
@@ -32,14 +33,43 @@ class TestRealModelPipeline(unittest.TestCase):
         cls.openmeteo = OpenMeteoProvider()
         cls.openaq = OpenAQProvider()
 
-    def test_01_openmeteo_provider_returns_df(self):
-        """Test 1: Validates Open-Meteo weather provider API call."""
+    @patch('src.data_providers.openmeteo_provider.requests.get')
+    def test_01_openmeteo_provider_returns_df(self, mock_get):
+        """Test 1: Validates Open-Meteo weather provider API call (mocked)."""
+        mock_response = mock_get.return_value
+        mock_response.raise_for_status.return_value = None
+        mock_response.json.return_value = {
+            "hourly": {
+                "time": ["2024-01-01T00:00"],
+                "temperature_2m": [15.0],
+                "relative_humidity_2m": [60.0],
+                "wind_speed_10m": [2.5],
+                "wind_direction_10m": [180.0],
+                "surface_pressure": [1010.0],
+                "precipitation": [0.0],
+                "boundary_layer_height": [300.0]
+            }
+        }
         df = self.openmeteo.fetch_weather_data(28.6469, 77.3162, "2024-01-01", "2024-01-02")
         self.assertIsInstance(df, pd.DataFrame)
         self.assertGreater(len(df), 0)
 
-    def test_02_openaq_provider_returns_df(self):
-        """Test 2: Validates OpenAQ provider API call and fallback."""
+    @patch('src.data_providers.openaq_provider.requests.get')
+    def test_02_openaq_provider_returns_df(self, mock_get):
+        """Test 2: Validates OpenAQ provider API call and fallback (mocked)."""
+        mock_response = mock_get.return_value
+        mock_response.raise_for_status.return_value = None
+        mock_response.json.return_value = {
+            "hourly": {
+                "time": ["2024-01-01T00:00"],
+                "pm2_5": [50.0],
+                "pm10": [100.0],
+                "nitrogen_dioxide": [20.0],
+                "sulphur_dioxide": [10.0],
+                "carbon_monoxide": [1000.0],
+                "ozone": [30.0]
+            }
+        }
         df = self.openaq.fetch_air_quality_data(28.6469, 77.3162, "2024-01-01", "2024-01-02")
         self.assertIsInstance(df, pd.DataFrame)
         self.assertGreater(len(df), 0)

@@ -14,9 +14,10 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 from dotenv import load_dotenv
+import truststore
+truststore.inject_into_ssl()
 
 load_dotenv()
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class OpenAQProvider:
     OPENAQ_V3_BASE = "https://api.openaq.org/v3"
@@ -53,7 +54,7 @@ class OpenAQProvider:
             "limit": 5
         }
         
-        r_loc = requests.get(f"{self.OPENAQ_V3_BASE}/locations", headers=headers, params=params_loc, verify=False, timeout=8)
+        r_loc = requests.get(f"{self.OPENAQ_V3_BASE}/locations", headers=headers, params=params_loc, timeout=8)
         r_loc.raise_for_status()
         results = r_loc.json().get("results", [])
         
@@ -91,7 +92,7 @@ class OpenAQProvider:
                     "datetime_to": f"{end_date}T23:59:59Z",
                     "limit": 1000
                 }
-                r_meas = requests.get(f"{self.OPENAQ_V3_BASE}/sensors/{s_id}/hours", headers=headers, params=params_meas, verify=False, timeout=6)
+                r_meas = requests.get(f"{self.OPENAQ_V3_BASE}/sensors/{s_id}/hours", headers=headers, params=params_meas, timeout=6)
                 if r_meas.status_code == 200:
                     meas_results = r_meas.json().get("results", [])
                     for m in meas_results:
@@ -141,7 +142,7 @@ class OpenAQProvider:
             params["start_date"] = start_date
             params["end_date"] = end_date
         
-        r = requests.get(self.OPENMETEO_AQ_BASE, params=params, verify=False, timeout=10)
+        r = requests.get(self.OPENMETEO_AQ_BASE, params=params, timeout=10)
         r.raise_for_status()
         data = r.json()
         

@@ -11,9 +11,6 @@ import requests
 import pandas as pd
 import numpy as np
 from datetime import datetime
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
 class OpenMeteoProvider:
     ARCHIVE_URL = "https://archive-api.open-meteo.com/v1/archive"
     FORECAST_URL = "https://api.open-meteo.com/v1/forecast"
@@ -48,7 +45,7 @@ class OpenMeteoProvider:
             url = self.ARCHIVE_URL
 
         try:
-            r = requests.get(url, params=params, verify=False, timeout=10)
+            r = requests.get(url, params=params, timeout=10)
             r.raise_for_status()
             data = r.json()
         except Exception as e:
@@ -56,7 +53,7 @@ class OpenMeteoProvider:
             params.pop("start_date", None)
             params.pop("end_date", None)
             params["past_days"] = 3
-            r = requests.get(self.FORECAST_URL, params=params, verify=False, timeout=10)
+            r = requests.get(self.FORECAST_URL, params=params, timeout=10)
             r.raise_for_status()
             data = r.json()
 
